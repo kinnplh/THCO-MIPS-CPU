@@ -39,6 +39,7 @@ package constantsIF is
 	constant ALU_SRA: std_logic := "1000";
 	constant ALU_SRL: std_logic := "1010";
 	constant ALU_NOT: std_logic := "1011";
+	constant ALU_LOAD: std_logic := "1101";
 	
 
 end package ; -- constantsIF 

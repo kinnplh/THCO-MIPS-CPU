@@ -25,7 +25,7 @@ entity EXE_MEM_Latch is
 		 );
 end EXE_MEM_Latch;
 
-architecture Behavioral of EXE_MEM is
+architecture Behavioral of EXE_MEM_Latch is
 
 begin
 	process (ExToMem_CLK)
