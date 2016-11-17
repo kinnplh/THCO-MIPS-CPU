@@ -26,5 +26,9 @@ package constantsIF is
 	constant SerialStateRead: std_logic_vector(2 downto 0) := "101";
 	constant SerialDataRead: std_logic_vector(2 downto 0) := "110";
 	constant SerialDataWrite: std_logic_vector(2 downto 0) := "111";
+	
+	constant ReadEnable: std_logic := '1';
+	constant WriteEnable: std_logic := '1';
+	
 
 end package ; -- constantsIF 
