@@ -21,7 +21,7 @@ end ALU;
 architecture Behavioral of ALU is
 begin
 	process (ALU_Op1, ALU_Op2, ALU_Inst)
-		variable res : STD_LOGIC_VECTOR(15 downto 0) := ZERO;
+		variable res : STD_LOGIC_VECTOR(15 downto 0) := ZeroWord;
 	begin
 		case ALU_Inst is
 			when ALU_ADD =>
