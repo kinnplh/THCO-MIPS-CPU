@@ -10,7 +10,7 @@ entity IF_ID_Latch is
 	pc_in, inst_in: in std_logic_vector(15 downto 0);
 	all_pause_signal: in std_logic_vector(0 to 4);
 	pc_out, inst_out: in std_logic_vector(15 downto 0)
-  ) ;
+  );
 end entity ; -- IF_ID_Latch
 
 architecture arch of IF_ID_Latch is
