@@ -30,5 +30,15 @@ package constantsIF is
 	constant ReadEnable: std_logic := '1';
 	constant WriteEnable: std_logic := '1';
 	
+	constant ALU_ADD: std_logic := "0000";
+	constant ALU_SUB: std_logic := "1001";
+	constant ALU_ASSIGN: std_logic := "0100";
+	constant ALU_OR: std_logic := "0110";
+	constant ALU_AND: std_logic := "1100"; 
+	constant ALU_SLL: std_logic := "0111";
+	constant ALU_SRA: std_logic := "1000";
+	constant ALU_SRL: std_logic := "1010";
+	constant ALU_NOT: std_logic := "1011";
+	
 
 end package ; -- constantsIF 
