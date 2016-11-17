@@ -24,7 +24,7 @@ begin
 			wb_write_reg <= '0';
 			wb_out_data <= ZeroWord;
 			wb_write_reg <= "0000"; --?
-		elsif clk'event and clk = edgeDetect then
+		elsif rising_edge(clk) then
 			wb_write_reg <= mem_write_reg;
 			wb_write_back <= mem_write_back;
 			wb_out_data <= mem_out_data;

@@ -15,7 +15,8 @@ package constantsIF is
 
 	constant NOPInstruct: std_logic_vector(15 downto 0) := "0000100000000000";
 	constant IF_ID_LatchReset: std_logic := '1';
-	constant ID_EXE_LatchReset: std_logic := '1';
+	constant ID_EXE_LatchReset: std_logic := '1'; -- 只需定义一种rst信号？
+	constant RstEnable: std_logic := '1';
 	constant pauseSignal: std_logic := '1';
 
 	constant ZeroWord: std_logic_vector(15 downto 0) := "0000000000000000";
