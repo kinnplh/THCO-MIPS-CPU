@@ -4,7 +4,7 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 use work.constantsIF.all;
 
-entity EXE_MEM is
+entity EXE_MEM_Latch is
     Port ( 
 			ExToMem_CLK : in STD_LOGIC;
 			ExToMem_Reset : in  STD_LOGIC;
@@ -23,7 +23,7 @@ entity EXE_MEM is
 			ExToMem_RegAddr_OUT : out  STD_LOGIC_VECTOR(3 downto 0);
 			ExToMem_AddrType_OUT : out STD_LOGIC_VECTOR(2 downto 0)
 		 );
-end EXE_MEM;
+end EXE_MEM_Latch;
 
 architecture Behavioral of EXE_MEM is
 
