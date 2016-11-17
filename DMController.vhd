@@ -1,0 +1,75 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+use work.constantsIF.all;
+
+entity DMController is
+port (
+	-- data
+	read_write_addr: in std_logic_vector(15 downto 0);
+	write_data: in std_logic_vector(15 downto 0);
+	-- signal
+	mem_signal: in std_logic_vector(2 downto 0); 
+	-- output
+	read_result: out std_logic_vector(15 downto 0);
+
+	-- 串口状态
+	tbre, tsre, data_ready: in std_logic;
+	-- 串口使能信号
+	rdn, wrn: out std_logic;
+
+	-- ram1使能信号
+	ram1_oe, ram1_we, ram1_en: out std_logic;
+	-- ram1总线
+	ram1_addr: out std_logic_vector(17 downto 0);
+	ram1_data: inout std_logic_vector(15 downto 0)
+);
+end entity ; -- DMController
+
+architecture arch of DMController is
+--signal read_data std_logic := '0';
+begin
+	
+	process(read_write_addr, write_data, mem_signal)
+	begin
+		--默认值：全部禁用
+		ram1_oe <= '1';
+		ram1_we <= '1';
+		ram1_en <= '1';
+		rdn <= '1';
+		wrn <= '1';
+		case (mem_signal) is
+			when DMRead =>
+				ram1_data <= "ZZZZZZZZZZZZZZZZ";
+				ram1_oe <= '0';
+				ram1_we <= '1';
+				ram1_addr <= "00" & read_write_addr;
+			when DMWrite =>
+				ram1_data <= write_data;
+				ram1_addr <= "00" & read_write_addr;
+				ram1_oe <= '1';
+				ram1_we <= '0';
+			when SerialStateRead =>
+				read_result <= "00000000000000" & (tbre AND tsre) & data_ready;
+			when SerialDataRead =>
+				ram1_data <= "ZZZZZZZZZZZZZZZZ";
+				rdn <= '1';
+			when SerialDataWrite =>
+				ram1_data <= write_data;
+				wrn <= '0';
+			when others =>
+				--
+		end case;
+	end process;
+
+	process(ram1_data)
+	begin
+		if mem_signal = DMRead or mem_sign = SerialDataRead then
+			read_result <= ram1_data;
+		else
+			read_result <= NOPInstruct;
+		end if;
+	end process; -- getResult
+
+end architecture; -- arch

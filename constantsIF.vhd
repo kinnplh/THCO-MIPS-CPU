@@ -16,4 +16,15 @@ package constantsIF is
 	constant IF_ID_LatchReset: std_logic := '1';
 	constant pauseSignal: std_logic := '1';
 
+	constant ZeroWord: std_logic_vector(15 downto 0) := "0000000000000000";
+
+	constant ALUResult: std_logic_vector(2 downto 0) := "000";
+	constant DMRead: std_logic_vector(2 downto 0) := "001";
+	constant DMWrite: std_logic_vector(2 downto 0) := "010";
+	constant IMRead: std_logic_vector(2 downto 0) := "011";
+	constant IMWrite: std_logic_vector(2 downto 0) := "100";
+	constant SerialStateRead: std_logic_vector(2 downto 0) := "101";
+	constant SerialDataRead: std_logic_vector(2 downto 0) := "110";
+	constant SerialDataWrite: std_logic_vector(2 downto 0) := "111";
+
 end package ; -- constantsIF 
