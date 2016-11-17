@@ -1,5 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;
+use ieee.numeric_std.all; -- needed?
 
 package constantsIF is
 	constant edgeDetect: std_logic := '1';
@@ -30,10 +31,9 @@ package constantsIF is
 	
 	constant ReadEnable: std_logic := '1';
 	constant WriteEnable: std_logic := '1';
-<<<<<<< HEAD
+
 	constant UnusedRegAddr: std_logic_vector(3 downto 0) := "1111";
 	constant NopInst: std_logic_vector(3 downto 0) := "0101";
-=======
 	
 	constant ALU_ADD: std_logic := "0000";
 	constant ALU_SUB: std_logic := "1001";
@@ -44,7 +44,7 @@ package constantsIF is
 	constant ALU_SRA: std_logic := "1000";
 	constant ALU_SRL: std_logic := "1010";
 	constant ALU_NOT: std_logic := "1011";
-	
 
->>>>>>> 18ff0fc965905375971dcabb9eb91415e8569724
+	type RegArray is array(11 downto 0) of std_logic_vector(15 downto 0);
+
 end package ; -- constantsIF 

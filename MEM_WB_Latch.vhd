@@ -13,8 +13,7 @@ port (
 	wb_write_back: out std_logic;
 	mem_out_data: in std_logic_vector(15 downto 0);
 	wb_out_data: out std_logic_vector(15 downto 0)
-
-	);
+);
 end entity;
 
 architecture arch of MEM_WB_Latch is
@@ -24,7 +23,7 @@ begin
 		if rst = '1' then
 			wb_write_reg <= '0';
 			wb_out_data <= ZeroWord;
-			wb_write_reg <= '0000'; --?
+			wb_write_reg <= "0000"; --?
 		elsif clk'event and clk = edgeDetect then
 			wb_write_reg <= mem_write_reg;
 			wb_write_back <= mem_write_back;
