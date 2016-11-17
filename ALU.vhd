@@ -57,11 +57,11 @@ begin
 			Addr_Type <= "01";
 		else
 			Addr_Type <= "00";
-		end if
+		end if;
 		
 		if (((Read_Mem = ReadEnable) or (Write_Mem = WriteEnable)) and (Addr_Type = "01"))then
 			ALU_Pause <= '1';
-		end if
+		end if;
 			
 	end process;
 end Behavioral;

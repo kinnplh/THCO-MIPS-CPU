@@ -14,6 +14,7 @@ package constantsIF is
 
 	constant NOPInstruct: std_logic_vector(15 downto 0) := "0000100000000000";
 	constant IF_ID_LatchReset: std_logic := '1';
+	constant ID_EXE_LatchReset: std_logic := '1';
 	constant pauseSignal: std_logic := '1';
 
 	constant ZeroWord: std_logic_vector(15 downto 0) := "0000000000000000";
@@ -29,6 +30,6 @@ package constantsIF is
 	
 	constant ReadEnable: std_logic := '1';
 	constant WriteEnable: std_logic := '1';
-	
-
+	constant UnusedRegAddr: std_logic_vector(3 downto 0) := "1111";
+	constant NopInst: std_logic_vector(3 downto 0) := "0101";
 end package ; -- constantsIF 
