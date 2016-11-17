@@ -30,6 +30,21 @@ package constantsIF is
 	
 	constant ReadEnable: std_logic := '1';
 	constant WriteEnable: std_logic := '1';
+<<<<<<< HEAD
 	constant UnusedRegAddr: std_logic_vector(3 downto 0) := "1111";
 	constant NopInst: std_logic_vector(3 downto 0) := "0101";
+=======
+	
+	constant ALU_ADD: std_logic := "0000";
+	constant ALU_SUB: std_logic := "1001";
+	constant ALU_ASSIGN: std_logic := "0100";
+	constant ALU_OR: std_logic := "0110";
+	constant ALU_AND: std_logic := "1100"; 
+	constant ALU_SLL: std_logic := "0111";
+	constant ALU_SRA: std_logic := "1000";
+	constant ALU_SRL: std_logic := "1010";
+	constant ALU_NOT: std_logic := "1011";
+	
+
+>>>>>>> 18ff0fc965905375971dcabb9eb91415e8569724
 end package ; -- constantsIF 

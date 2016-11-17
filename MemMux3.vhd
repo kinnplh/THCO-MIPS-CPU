@@ -26,4 +26,5 @@ begin
 			when ALUResult => out_data <= write_data;
 			when others => out_data <= ZeroWord;
 		end case;
+	end process;
 end architecture;
