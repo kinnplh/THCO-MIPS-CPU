@@ -4,11 +4,7 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 use work.constantsIF.all;
 
-entity mux is
-	--data1 实际返回的寄存器值或立即数	in	16		2）9）10）
-	--data2 实际返回的寄存器值或立即数	in	16		2）9）10）
-	--signal	in	1		11）12）13）
-	--outdata	out	16		
+entity mux is	
  	port (
 		data1, data2: in std_logic_vector(15 downto 0);
 		choose: in std_logic;

@@ -5,16 +5,6 @@ use ieee.std_logic_unsigned.all;
 use work.constantsIF.all;
 
 entity loadconflict is
-	--	lastInst 上一条指令	in	6		
-	--	lastaddress 上一条地址	in	4		
-	
-	--	reg1_addr	in	4		3）
-	--	reg2_addr	in	4		4）
-	
-	--	reg1_read_enable	in	1		5）
-	--	reg2_read_enable	in	1		6）
-	--	pause	out	1		
-
  	port (
  		lastInst: in std_logic_vector(3 downto 0);
 		lastAddress: in std_logic_vector(3 downto 0);
