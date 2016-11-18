@@ -28,9 +28,17 @@ end EXE_MEM_Latch;
 architecture Behavioral of EXE_MEM_Latch is
 
 begin
-	process (ExToMem_CLK)
+	process (ExToMem_CLK, ExToMem_Reset)
 	begin
-		if (ExToMem_CLK'event and ExToMem_CLK = '1') then
+		if ExToMem_Reset = RstEnable then
+			ExToMem_MemALU_OUT <= ZeroWord;
+			ExToMem_AddrType_OUT <= ALUResult;
+			ExToMem_RegWr_OUT <= WriteDisable;
+			ExToMem_RegAddr_OUT <= UnusedRegAddr;
+			ExToMem_MemVal_OUT <= ZeroWord;
+			
+			ExToMem_PC_OUT <= ZeroWord;
+		elsif rising_edge(ExToMem_CLK) then
 			ExToMem_MemALU_OUT <= ExToMem_MemALU_IN;
 			ExToMem_AddrType_OUT <= ExToMem_AddrType_IN;
 			ExToMem_RegWr_OUT <= ExToMem_RegWr_IN;
@@ -38,8 +46,7 @@ begin
 			ExToMem_MemVal_OUT <= ExToMem_MemVal_IN;
 			
 			ExToMem_PC_OUT <= ExToMem_PC_IN;
-			
-			
-		end if;
+
+		end if ;
 	end process;
 end Behavioral;
