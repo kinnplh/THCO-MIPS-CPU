@@ -15,7 +15,7 @@ package constantsIF is
 
 	constant NOPInstruct: std_logic_vector(15 downto 0) := "0000100000000000";
 	constant IF_ID_LatchReset: std_logic := '1';
-	constant ID_EXE_LatchReset: std_logic := '1'; -- 只需定义一种rst信号？
+	constant ID_EXE_LatchReset: std_logic := '1';
 	constant RstEnable: std_logic := '1';
 	constant pauseSignal: std_logic := '1';
 
@@ -67,7 +67,7 @@ package constantsIF is
 	--	controller
 	constant ENABLE: std_logic := '1';
 	constant DISABLE: std_logic := '0';
-	constant ZERO3: std_logic_vector(3 downto 0) := "000";
+	constant ZERO3: std_logic_vector(2 downto 0) := "000";
 	constant ZERO4: std_logic_vector(3 downto 0) := "0000";
 
 	--	op
@@ -75,7 +75,7 @@ package constantsIF is
 	constant THU_ID_LOAD: std_logic_vector(3 downto 0) := "1101";
 	constant BRANCH: std_logic_vector(3 downto 0) := "0001";
 	constant BRANCHE: std_logic_vector(3 downto 0) := "0010";
-	constant BRANCHEN: std_logic_vector(3 downto 0) := "0011";
+	constant BRANCHN: std_logic_vector(3 downto 0) := "0011";
 	constant JR: std_logic_vector(3 downto 0) := "1110";
 
 	--	funct

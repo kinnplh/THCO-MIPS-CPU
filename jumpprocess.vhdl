@@ -4,7 +4,7 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 use work.constantsIF.all;
 
-entity controller is	
+entity jumpprocess is	
  	port (
  		pc, immd, real_reg1_data: in std_logic_vector(15 downto 0);
 		EXEInst: in std_logic_vector(3 downto 0);
@@ -27,7 +27,7 @@ begin
 				branch_enable <= ENABLE;
 				branch_target <= pc + real_reg1_data;
 			when BRANCHE =>
-				if (real_reg1_data = '0') then
+				if (real_reg1_data = ZeroWord) then
 					branch_enable <= ENABLE;
 					branch_target <= pc + immd;
 				else
@@ -35,7 +35,7 @@ begin
 					branch_target <= "0000000000000000";					
 				end if;
 			when BRANCHN =>
-				if (real_reg1_data /= '0') then
+				if (real_reg1_data /= ZeroWord) then
 					branch_enable <= ENABLE;
 					branch_target <= pc + immd;
 				else

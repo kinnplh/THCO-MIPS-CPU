@@ -65,7 +65,7 @@ begin
 
 	process(ram1_data)
 	begin
-		if mem_signal = DMRead or mem_sign = SerialDataRead then
+		if mem_signal = DMRead or mem_signal = SerialDataRead then
 			read_result <= ram1_data;
 		else
 			read_result <= NOPInstruct;

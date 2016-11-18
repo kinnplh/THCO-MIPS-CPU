@@ -28,8 +28,8 @@ begin
 	variable reg1_addr_v, reg2_addr_v: std_logic_vector(3 downto 0);
 	begin
 		inst_temp := inst(15 downto 11);
-		reg1_addr_v := 0 & inst(10 downto 8);
-		reg2_addr_v := 0 & inst(7 downto 5);
+		reg1_addr_v := '0' & inst(10 downto 8);
+		reg2_addr_v := '0' & inst(7 downto 5);
 		case (inst_temp) is
 			when OP_ADDIU =>
 				write_reg_enable <= ENABLE;

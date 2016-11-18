@@ -7,7 +7,7 @@ use work.constantsIF.all;
 entity PCincreasor is
   port (
 	data_in: in std_logic_vector(15 downto 0);
-	data_out: in std_logic_vector(15 downto 0)
+	data_out: out std_logic_vector(15 downto 0)
   ) ;
 end entity ; -- increasor
 

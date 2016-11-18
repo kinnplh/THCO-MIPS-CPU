@@ -1,1 +1,0 @@
-# THCO-MIPS-CPU

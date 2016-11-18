@@ -45,8 +45,6 @@ begin
 				res := ALU_Op1;
 			when ALU_LOAD =>
 				res := ALU_Op1 + ALU_Op2;
-			when ALU_CMP =>
-				
 			when others =>
 				NULL;
 		end case;

@@ -38,8 +38,8 @@ begin
 			inst_out <= ALU_NOP;
 			write_mem_enable_out <= not WriteEnable;
 			read_mem_enable_out <= not ReadEnable;
-			op1 <= ZeroWord;
-			op2 <= ZeroWord;
+			op1_out <= ZeroWord;
+			op2_out <= ZeroWord;
 			write_mem_data_out <= ZeroWord;
 		elsif clk'event and clk = edgeDetect then
 			if all_pause_signal(2) /= pauseSignal then
@@ -57,8 +57,8 @@ begin
 				inst_out <= ALU_NOP;
 				write_mem_enable_out <= not WriteEnable;
 				read_mem_enable_out <= not ReadEnable;
-				op1 <= ZeroWord;
-				op2 <= ZeroWord;
+				op1_out <= ZeroWord;
+				op2_out <= ZeroWord;
 				write_mem_data_out <= ZeroWord;
 			-- otherwise hold
 			end if ;

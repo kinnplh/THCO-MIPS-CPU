@@ -21,7 +21,7 @@ begin
 	process(clk, rst)
 	begin
 		if rst = '1' then
-			wb_write_reg <= '0';
+			wb_write_back <= '0';
 			wb_out_data <= ZeroWord;
 			wb_write_reg <= "0000"; --?
 		elsif rising_edge(clk) then
@@ -29,5 +29,5 @@ begin
 			wb_write_back <= mem_write_back;
 			wb_out_data <= mem_out_data;
 		end if;
-	end process
+	end process;
 end architecture;
