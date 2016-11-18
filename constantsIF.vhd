@@ -15,7 +15,7 @@ package constantsIF is
 
 	constant NOPInstruct: std_logic_vector(15 downto 0) := "0000100000000000";
 	constant IF_ID_LatchReset: std_logic := '1';
-	constant ID_EXE_LatchReset: std_logic := '1'; -- 只需定义一种rst信号？
+	constant ID_EXE_LatchReset: std_logic := '1';
 	constant RstEnable: std_logic := '1';
 	constant pauseSignal: std_logic := '1';
 
@@ -69,16 +69,35 @@ package constantsIF is
 	--	controller
 	constant ENABLE: std_logic := '1';
 	constant DISABLE: std_logic := '0';
-	constant ZERO3: std_logic_vector(3 downto 0) := "000";
+	constant ZERO3: std_logic_vector(2 downto 0) := "000";
 	constant ZERO4: std_logic_vector(3 downto 0) := "0000";
+	constant ZERO16: std_logic_vector(15 downto 0) := "0000000000000000";
 
-	--	op
-	constant THU_ID_ADD: std_logic_vector(3 downto 0) := "0000";
-	constant THU_ID_LOAD: std_logic_vector(3 downto 0) := "1101";
-	constant BRANCH: std_logic_vector(3 downto 0) := "0001";
-	constant BRANCHE: std_logic_vector(3 downto 0) := "0010";
-	constant BRANCHEN: std_logic_vector(3 downto 0) := "0011";
-	constant JR: std_logic_vector(3 downto 0) := "1110";
+	--	操作码译码
+	constant THU_ID_ADD: std_logic_vector(4 downto 0) := "00000";
+	constant THU_ID_BRANCH: std_logic_vector(4 downto 0) := "00001";
+	constant THU_ID_BRANCHE: std_logic_vector(4 downto 0) := "00010";
+	constant THU_ID_BRANCHN: std_logic_vector(4 downto 0) := "00011";
+	constant THU_ID_ASSIGN: std_logic_vector(4 downto 0) := "00100";
+	constant THU_ID_NOP: std_logic_vector(4 downto 0) := "00101";
+	constant THU_ID_OR: std_logic_vector(4 downto 0) := "00110";
+	constant THU_ID_SLL: std_logic_vector(4 downto 0) := "00111";
+	constant THU_ID_SRA: std_logic_vector(4 downto 0) := "01000";
+	constant THU_ID_SUB: std_logic_vector(4 downto 0) := "01001";
+	constant THU_ID_SRL: std_logic_vector(4 downto 0) := "01010";
+	constant THU_ID_NOT: std_logic_vector(4 downto 0) := "01011";
+	constant THU_ID_AND: std_logic_vector(4 downto 0) := "01100";
+	constant THU_ID_LOAD: std_logic_vector(4 downto 0) := "01101";
+	constant THU_ID_JR: std_logic_vector(4 downto 0) := "01110";
+	constant THU_ID_CMP: std_logic_vector(4 downto 0) := "01111";
+	constant THU_ID_EQUAL: std_logic_vector(4 downto 0) := "10000";
+
+	--	特殊寄存器
+	constant REGISTER8_SP: std_logic_vector(3 downto 0) := "1000";
+	constant REGISTER9_T: std_logic_vector(3 downto 0) := "1001";
+	constant REGISTER10_IH: std_logic_vector(3 downto 0) := "1010";
+	constant REGISTER11_RA: std_logic_vector(3 downto 0) := "1011";
+
 
 	--	funct
 	constant OP_ADDIU: std_logic_vector(4 downto 0) := "01001";

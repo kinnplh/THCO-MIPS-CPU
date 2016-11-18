@@ -30,7 +30,7 @@ begin
 			if rst = RstEnable then
 				NULL;
 			elsif we = WriteEnable then
-				reg_array(to_integer(unsigned(waddr))) <= wdata;
+				reg_array(conv_integer(waddr)) <= wdata;
 			end if;
 		end if;
 	end process;
@@ -42,7 +42,7 @@ begin
 		elsif r1addr = waddr and we = WriteEnable and r1re = ReadEnable then
 			r1data <= wdata;
 		elsif r1re = ReadEnable then
-			r1data <= reg_array(to_integer(unsigned(r1addr)));
+			r1data <= reg_array(conv_integer(r1addr));
 		else
 			r1data <= ZeroWord;
 		end if;
@@ -55,7 +55,7 @@ begin
 		elsif r2addr = waddr and we = WriteEnable and r2re = ReadEnable then
 			r2data <= wdata;
 		elsif r1re = ReadEnable then
-			r2data <= reg_array(to_integer(unsigned(r2addr)));
+			r2data <= reg_array(conv_integer(r2addr));
 		else
 			r2data <= ZeroWord;
 		end if;

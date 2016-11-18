@@ -23,7 +23,7 @@ architecture arch of IMController is
 begin
 	
 	ram2_en <= '0';
-	process(read_write_addr, write_data, read_enable, write_enable)
+	process(read_write_addr, write_data, mem_signal)
 	begin
 		case (mem_signal) is
 			when IMWrite =>
@@ -44,7 +44,7 @@ begin
 	getResult : process(ram2_data)
 	begin
 		-- when write, the IF/ID will be disabled
-		if read_enable /= IMWrite then
+		if mem_signal /= IMWrite then
 			read_result <= ram2_data;
 		else
 			read_result <= NOPInstruct;

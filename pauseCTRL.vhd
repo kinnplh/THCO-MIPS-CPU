@@ -12,6 +12,7 @@ entity pauseCTRL is
 end entity ; -- pauseCTRL
 
 architecture arch of pauseCTRL is
+begin
 	process(IM_access_pause, load_conflict_pause)
 	begin
 		if IM_access_pause = pauseSignal or load_conflict_pause = pauseSignal then
@@ -20,10 +21,4 @@ architecture arch of pauseCTRL is
 			all_pause_signal <= "00000";
 		end if;
 	end process ; -- 
-
-
-begin
-
-
-
 end architecture ; -- arch
