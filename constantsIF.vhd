@@ -38,7 +38,8 @@ package constantsIF is
 
 
 	constant UnusedRegAddr: std_logic_vector(3 downto 0) := "1111";
-	constant ALU_NOP: std_logic_vector(3 downto 0) := "0101";	
+	constant ALU_NOP: std_logic_vector(3 downto 0) := "0101";
+
 	constant ALU_ADD: std_logic_vector(3 downto 0) := "0000";
 	constant ALU_SUB: std_logic_vector(3 downto 0) := "1001";
 	constant ALU_ASSIGN: std_logic_vector(3 downto 0) := "0100";
@@ -59,17 +60,17 @@ package constantsIF is
 	constant LHS: std_logic := '0';
     constant RHS: std_logic := '1';
 
-	--	暂停
+	--	pause
 	constant SUSPEND: std_logic := '0';
 	constant WAKE: std_logic := '1';
 
-	--	控制器
+	--	controller
 	constant ENABLE: std_logic := '1';
 	constant DISABLE: std_logic := '0';
 	constant ZERO3: std_logic_vector(3 downto 0) := "000";
 	constant ZERO4: std_logic_vector(3 downto 0) := "0000";
 
-	--	操作码译码
+	--	op
 	constant THU_ID_ADD: std_logic_vector(3 downto 0) := "0000";
 	constant THU_ID_LOAD: std_logic_vector(3 downto 0) := "1101";
 	constant BRANCH: std_logic_vector(3 downto 0) := "0001";
@@ -77,7 +78,7 @@ package constantsIF is
 	constant BRANCHEN: std_logic_vector(3 downto 0) := "0011";
 	constant JR: std_logic_vector(3 downto 0) := "1110";
 
-	--	操作码
+	--	funct
 	constant OP_ADDIU: std_logic_vector(4 downto 0) := "01001";
 	constant OP_ADDIU3: std_logic_vector(4 downto 0) := "01000";
 	constant OP_SPECIAL: std_logic_vector(4 downto 0) := "01100";

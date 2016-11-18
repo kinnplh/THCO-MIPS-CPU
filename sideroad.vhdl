@@ -5,21 +5,6 @@ use ieee.std_logic_unsigned.all;
 use work.constantsIF.all;
 
 entity sideroad is
-	--reg1_addr	in	4		
-	--reg2_addr	in	4		
-	--reg1_data	in	16		7)
-	--reg2_data	in	16		8)
-	--reg1_read_enable	in	1		
-	--reg2_read_enable	in	1		
-	--exe_reg_write_enable 当前执行阶段（上一条指令）是否需要往回写入寄存器	in	1		
-	--exe_reg_write_address 当前执行阶段（上一条指令）需要写入寄存器的地址	in	4		
-	--exe_reg_write_data 当前执行阶段（上一条指令）需要写入的数据	in	16		
-	--mem_reg_write_enable 当前访存阶段（上上条指令）是否需要往回写入寄存器	in	1		
-	--mem_reg_write_address 当前访存阶段（上上条指令）那需要写入寄存器的地址	in	4		
-	--mem_reg_write_data 当前访存阶段（上上条指令）需要写入的数据	in	16		
-	--real_reg1_data 实际返回的寄存器1的数据（如果有回写就是回写的否则就是寄存器本身的值）	out	16		（9
-	--real_reg2_data 实际返回的寄存器2的数据（如果有回写就是回写的否则就是寄存器本身的值）	out	16		（10
-
  	port (
 		reg1_addr, reg2_addr: in std_logic_vector(3 downto 0);
 		reg1_data, reg2_data: in std_logic_vector(15 downto 0);
