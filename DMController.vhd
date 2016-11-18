@@ -14,14 +14,14 @@ port (
 	-- output
 	read_result: out std_logic_vector(15 downto 0);
 
-	-- 串口状态
+	-- serial status
 	tbre, tsre, data_ready: in std_logic;
-	-- 串口使能信号
+	-- serial signal
 	rdn, wrn: out std_logic;
 
-	-- ram1使能信号
+	-- ram1 enable
 	ram1_oe, ram1_we, ram1_en: out std_logic;
-	-- ram1总线
+	-- ram1 bus
 	ram1_addr: out std_logic_vector(17 downto 0);
 	ram1_data: inout std_logic_vector(15 downto 0)
 );
@@ -33,7 +33,7 @@ begin
 	
 	process(read_write_addr, write_data, mem_signal)
 	begin
-		--默认值：全部禁用
+		-- default: all disabled
 		ram1_oe <= '1';
 		ram1_we <= '1';
 		ram1_en <= '1';
@@ -65,7 +65,7 @@ begin
 
 	process(ram1_data)
 	begin
-		if mem_signal = DMRead or mem_sign = SerialDataRead then
+		if mem_signal = DMRead or mem_signal = SerialDataRead then
 			read_result <= ram1_data;
 		else
 			read_result <= NOPInstruct;

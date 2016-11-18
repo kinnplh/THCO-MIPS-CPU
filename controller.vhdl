@@ -5,21 +5,6 @@ use ieee.std_logic_unsigned.all;
 use work.constantsIF.all;
 
 entity controller is
-	--pc	in	16		
-	--inst	in	16		
-	--write_reg_enable 是否要写寄存器	out	1		
-	--write_mem_enable 是否要写内存	out	1		
-	--write_mem_data_from_reg1 写进内存的数据是否来自寄存器1	out	1		（13
-	--read_mem_enable 是否要读内存	out 	1		
-	--reg1_read_enable 是否读寄存器1	out	1		（4
-	--reg2_read_enable 是否读寄存器2	out	1		（6
-	--op1_from_reg 操作数1是否来自寄存器	out	1		（11
-	--op2_from_reg 操作数2是否来自寄存器	out	1		（12
-	--reg1_addr 寄存器1地址	out	4		（3
-	--reg2_addr 寄存器2地址	out	4		（5
-	--write_reg_addr 要写的寄存器地址	out	4		
-	--EXEInst 翻译后传给执行流水段的指令	out	6		（1
-	--immd 立即数扩展	out	16		（2	
  	port (
  		pc, inst: in std_logic_vector(15 downto 0);
 
@@ -46,7 +31,6 @@ begin
 		reg1_addr_v := "0" & inst(10 downto 8);
 		reg2_addr_v := "0" & inst(7 downto 5);
 		reg3_addr_v := "0" & inst(4 downto 2);
-
 		case (inst_temp) is
 			when OP_ADDIU =>
 				write_reg_enable <= ENABLE;

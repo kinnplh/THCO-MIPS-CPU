@@ -15,7 +15,7 @@ package constantsIF is
 
 	constant NOPInstruct: std_logic_vector(15 downto 0) := "0000100000000000";
 	constant IF_ID_LatchReset: std_logic := '1';
-	constant ID_EXE_LatchReset: std_logic := '1'; -- 只需定义一种rst信号？
+	constant ID_EXE_LatchReset: std_logic := '1';
 	constant RstEnable: std_logic := '1';
 	constant pauseSignal: std_logic := '1';
 
@@ -39,7 +39,7 @@ package constantsIF is
 
 	constant UnusedRegAddr: std_logic_vector(3 downto 0) := "1111";
 	constant ALU_NOP: std_logic_vector(3 downto 0) := "0101";
-	
+
 	constant ALU_ADD: std_logic_vector(3 downto 0) := "0000";
 	constant ALU_SUB: std_logic_vector(3 downto 0) := "1001";
 	constant ALU_ASSIGN: std_logic_vector(3 downto 0) := "0100";
@@ -49,6 +49,8 @@ package constantsIF is
 	constant ALU_SRA: std_logic_vector(3 downto 0) := "1000";
 	constant ALU_SRL: std_logic_vector(3 downto 0) := "1010";
 	constant ALU_NOT: std_logic_vector(3 downto 0) := "1011";
+	constant ALU_LOAD: std_logic_vector(3 downto 0) := "1101";
+	constant ALU_CMP: std_logic_vector(3 downto 0) := "1101";
 	--constant ALU_NOP: std_logic_vector(3 downto 0) := "1111";
 
 	type RegArray is array(11 downto 0) of std_logic_vector(15 downto 0);
@@ -58,14 +60,14 @@ package constantsIF is
 	constant LHS: std_logic := '0';
     constant RHS: std_logic := '1';
 
-	--	暂停
+	--	pause
 	constant SUSPEND: std_logic := '0';
 	constant WAKE: std_logic := '1';
 
-	--	控制器
+	--	controller
 	constant ENABLE: std_logic := '1';
 	constant DISABLE: std_logic := '0';
-	constant ZERO3: std_logic_vector(3 downto 0) := "000";
+	constant ZERO3: std_logic_vector(2 downto 0) := "000";
 	constant ZERO4: std_logic_vector(3 downto 0) := "0000";
 	constant ZERO16: std_logic_vector(15 downto 0) := "0000000000000000";
 
@@ -94,7 +96,8 @@ package constantsIF is
 	constant REGISTER10_IH: std_logic_vector(3 downto 0) := "1010";
 	constant REGISTER11_RA: std_logic_vector(3 downto 0) := "1011";
 
-	--	操作码
+
+	--	funct
 	constant OP_ADDIU: std_logic_vector(4 downto 0) := "01001";
 	constant OP_ADDIU3: std_logic_vector(4 downto 0) := "01000";
 	constant OP_SPECIAL: std_logic_vector(4 downto 0) := "01100";
@@ -150,6 +153,5 @@ package constantsIF is
 	constant SHIFT_SLL: std_logic_vector(1 downto 0) := "00";
 	constant SHIFT_SRA: std_logic_vector(1 downto 0) := "11";
 	constant SHIFT_SRL: std_logic_vector(1 downto 0) := "10";
-
 
 end package ; -- constantsIF 

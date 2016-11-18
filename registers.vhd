@@ -12,7 +12,7 @@ port (
 
 	r1re, r2re: in std_logic;
 
-	waddr: in std_logic_vector(3 downto 0);;
+	waddr: in std_logic_vector(3 downto 0);
 	wdata: in std_logic_vector(15 downto 0);
 	we: in std_logic;
 
@@ -30,7 +30,7 @@ begin
 			if rst = RstEnable then
 				NULL;
 			elsif we = WriteEnable then
-				reg_array(to_integer(unsigned(waddr))) <= wdata;
+				reg_array(conv_integer(waddr)) <= wdata;
 			end if;
 		end if;
 	end process;
@@ -41,8 +41,8 @@ begin
 			r1data <= ZeroWord;
 		elsif r1addr = waddr and we = WriteEnable and r1re = ReadEnable then
 			r1data <= wdata;
-		elsif r1re = ReadEnable
-			r1data <= reg_array(to_integer(unsigned(r1addr)));
+		elsif r1re = ReadEnable then
+			r1data <= reg_array(conv_integer(r1addr));
 		else
 			r1data <= ZeroWord;
 		end if;
@@ -54,8 +54,8 @@ begin
 			r2data <= ZeroWord;
 		elsif r2addr = waddr and we = WriteEnable and r2re = ReadEnable then
 			r2data <= wdata;
-		elsif r1re = ReadEnable
-			r2data <= reg_array(to_integer(unsigned(r2addr)));
+		elsif r1re = ReadEnable then
+			r2data <= reg_array(conv_integer(r2addr));
 		else
 			r2data <= ZeroWord;
 		end if;

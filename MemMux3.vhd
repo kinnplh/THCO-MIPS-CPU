@@ -10,7 +10,7 @@ port (
 	dm_data: in std_logic_vector(15 downto 0);
 	im_data: in std_logic_vector(15 downto 0);
 
-	mem_signal: in std_logic_vector(3 downto 0);
+	mem_signal: in std_logic_vector(2 downto 0);
 
 	out_data: out std_logic_vector(15 downto 0)
 );

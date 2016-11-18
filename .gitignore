@@ -1,1 +1,14 @@
 .DS_Store
+*.cmd_log
+*.spl
+*.sym
+*.html
+*.lso
+xst/*
+iseconfig/*
+_xmsgs/*
+*.xise
+*.gise
+*.prj
+*.syr
+*.xst

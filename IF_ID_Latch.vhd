@@ -9,11 +9,12 @@ entity IF_ID_Latch is
 	clk, rst: in std_logic;
 	pc_in, inst_in: in std_logic_vector(15 downto 0);
 	all_pause_signal: in std_logic_vector(0 to 4);
-	pc_out, inst_out: in std_logic_vector(15 downto 0)
+	pc_out, inst_out: out std_logic_vector(15 downto 0)
   );
 end entity ; -- IF_ID_Latch
 
 architecture arch of IF_ID_Latch is
+begin
 	process(clk, rst)
 	begin
 		if rst = IF_ID_LatchReset then
@@ -28,6 +29,5 @@ architecture arch of IF_ID_Latch is
 				inst_out <= NOPInstruct;
 			end if ;
 		end if ;
-	end process ; -- 
-begin
+	end process ;
 end architecture ; -- arch
