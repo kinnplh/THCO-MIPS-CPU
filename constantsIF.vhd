@@ -38,21 +38,7 @@ package constantsIF is
 
 
 	constant UnusedRegAddr: std_logic_vector(3 downto 0) := "1111";
-	constant ALU_NOP: std_logic_vector(3 downto 0) := "0101";
-	
-<<<<<<< HEAD
-	constant ALU_ADD: std_logic := "0000";
-	constant ALU_SUB: std_logic := "1001";
-	constant ALU_ASSIGN: std_logic := "0100";
-	constant ALU_OR: std_logic := "0110";
-	constant ALU_AND: std_logic := "1100"; 
-	constant ALU_SLL: std_logic := "0111";
-	constant ALU_SRA: std_logic := "1000";
-	constant ALU_SRL: std_logic := "1010";
-	constant ALU_NOT: std_logic := "1011";
-	constant ALU_LOAD: std_logic := "1101";
-	
-=======
+	constant ALU_NOP: std_logic_vector(3 downto 0) := "0101";	
 	constant ALU_ADD: std_logic_vector(3 downto 0) := "0000";
 	constant ALU_SUB: std_logic_vector(3 downto 0) := "1001";
 	constant ALU_ASSIGN: std_logic_vector(3 downto 0) := "0100";
@@ -62,6 +48,8 @@ package constantsIF is
 	constant ALU_SRA: std_logic_vector(3 downto 0) := "1000";
 	constant ALU_SRL: std_logic_vector(3 downto 0) := "1010";
 	constant ALU_NOT: std_logic_vector(3 downto 0) := "1011";
+	constant ALU_LOAD: std_logic_vector(3 downto 0) := "1101";
+	constant ALU_CMP: std_logic_vector(3 downto 0) := "1101";
 	--constant ALU_NOP: std_logic_vector(3 downto 0) := "1111";
 
 	type RegArray is array(11 downto 0) of std_logic_vector(15 downto 0);
@@ -145,7 +133,5 @@ package constantsIF is
 	constant SHIFT_SLL: std_logic_vector(1 downto 0) := "00";
 	constant SHIFT_SRA: std_logic_vector(1 downto 0) := "11";
 	constant SHIFT_SRL: std_logic_vector(1 downto 0) := "10";
-
->>>>>>> 50e024e90c917519ea5be9fa16aac45ebf6d78a8
 
 end package ; -- constantsIF 
