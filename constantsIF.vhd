@@ -20,6 +20,7 @@ package constantsIF is
 	constant pauseSignal: std_logic := '1';
 
 	constant ZeroWord: std_logic_vector(15 downto 0) := "0000000000000000";
+	constant OneWord: std_logic_vector(15 downto 0) := "0000000000000001";
 
 	constant ALUResult: std_logic_vector(2 downto 0) := "000";
 	constant DMRead: std_logic_vector(2 downto 0) := "001";
@@ -38,19 +39,20 @@ package constantsIF is
 
 
 	constant UnusedRegAddr: std_logic_vector(3 downto 0) := "1111";
-	constant ALU_NOP: std_logic_vector(3 downto 0) := "0101";
+	constant ALU_NOP: std_logic_vector(3 downto 0) := "00101";
 
-	constant ALU_ADD: std_logic_vector(3 downto 0) := "0000";
-	constant ALU_SUB: std_logic_vector(3 downto 0) := "1001";
-	constant ALU_ASSIGN: std_logic_vector(3 downto 0) := "0100";
-	constant ALU_OR: std_logic_vector(3 downto 0) := "0110";
-	constant ALU_AND: std_logic_vector(3 downto 0) := "1100"; 
-	constant ALU_SLL: std_logic_vector(3 downto 0) := "0111";
-	constant ALU_SRA: std_logic_vector(3 downto 0) := "1000";
-	constant ALU_SRL: std_logic_vector(3 downto 0) := "1010";
-	constant ALU_NOT: std_logic_vector(3 downto 0) := "1011";
-	constant ALU_LOAD: std_logic_vector(3 downto 0) := "1101";
-	constant ALU_CMP: std_logic_vector(3 downto 0) := "1101";
+	constant ALU_ADD: std_logic_vector(3 downto 0) := "00000";
+	constant ALU_SUB: std_logic_vector(3 downto 0) := "01001";
+	constant ALU_ASSIGN: std_logic_vector(3 downto 0) := "00100";
+	constant ALU_OR: std_logic_vector(3 downto 0) := "00110";
+	constant ALU_AND: std_logic_vector(3 downto 0) := "01100"; 
+	constant ALU_SLL: std_logic_vector(3 downto 0) := "00111";
+	constant ALU_SRA: std_logic_vector(3 downto 0) := "01000";
+	constant ALU_SRL: std_logic_vector(3 downto 0) := "01010";
+	constant ALU_NOT: std_logic_vector(3 downto 0) := "01011";
+	constant ALU_LOAD: std_logic_vector(3 downto 0) := "01101";
+	constant ALU_CMP: std_logic_vector(3 downto 0) := "01111";
+	constant ALU_EQUAL: std_logic_vector(3 downto 0) := "10000";
 	--constant ALU_NOP: std_logic_vector(3 downto 0) := "1111";
 
 	type RegArray is array(11 downto 0) of std_logic_vector(15 downto 0);

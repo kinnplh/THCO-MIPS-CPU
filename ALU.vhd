@@ -8,7 +8,7 @@ entity ALU is
     Port (
 		   Read_Mem : in STD_LOGIC;
 		   Write_Mem : in STD_LOGIC;
-		   ALU_Inst : in  STD_LOGIC_VECTOR (3 downto 0);
+		   ALU_Inst : in  STD_LOGIC_VECTOR (4 downto 0);
            ALU_Op1 : in  STD_LOGIC_VECTOR (15 downto 0);
            ALU_Op2 : in  STD_LOGIC_VECTOR (15 downto 0);
            ALU_OUT : out  STD_LOGIC_VECTOR (15 downto 0);
@@ -46,7 +46,19 @@ begin
 			when ALU_LOAD =>
 				res := ALU_Op1 + ALU_Op2;
 			when ALU_CMP =>
-				
+				if(ALU_Op1 < ALU_Op2) then
+					res := OneWord;
+				else 
+					res := ZeroWord;
+				end if;
+
+			when ALU_EQUAL =>
+				if(ALU_Op1 = ALU_Op2) then
+					res := ZeroWord;
+				else 
+					res := OneWord;
+				end if;
+
 			when others =>
 				NULL;
 		end case;
@@ -76,7 +88,7 @@ begin
 		end if;
 		
 		
-		if (((Read_Mem = ReadEnable) or (Write_Mem = WriteEnable)) and (Addr_Type = "01"))then
+		if (((Read_Mem = ReadEnable) or (Write_Mem = WriteEnable)) and ((Addr_Type = IMRead) or (Addr_Type = IMWrite)))then
 			ALU_Pause <= pauseSignal;
 		end if;
 			
