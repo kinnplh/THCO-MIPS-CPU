@@ -64,12 +64,16 @@ begin
 		end case;
 			
 		ALU_OUT <= res;
+		ALU_Pause <= '0';
 		
 		if(Read_Mem = ReadEnable) then
 			if(res >= x"8000" and res <= x"BEFF")then
 				Addr_Type <= DMRead;
 			elsif(res >= x"0000" and res <= x"3FFF")then
 				Addr_Type <= IMRead;
+				if (Read_Mem = ReadEnable) or (Write_Mem = WriteEnable)then
+					ALU_Pause <= pauseSignal;
+				end if;
 			elsif(res = x"BF01")then
 				Addr_Type <= SerialStateRead;
 			elsif(res = x"BF00")then
@@ -80,16 +84,14 @@ begin
 				Addr_Type <= DMWrite;
 			elsif(res >= x"0000" and res <= x"3FFF")then
 				Addr_Type <= IMWrite;
+				if (Read_Mem = ReadEnable) or (Write_Mem = WriteEnable)then
+					ALU_Pause <= pauseSignal;
+				end if;
 			elsif(res = x"BF00")then
 				Addr_Type <= SerialDataWrite;
 			end if;
 		else 
 			Addr_Type <= ALUResult;	
-		end if;
-		
-		
-		if (((Read_Mem = ReadEnable) or (Write_Mem = WriteEnable)) and ((Addr_Type = IMRead) or (Addr_Type = IMWrite)))then
-			ALU_Pause <= pauseSignal;
 		end if;
 			
 	end process;

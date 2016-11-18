@@ -39,21 +39,21 @@ package constantsIF is
 
 
 	constant UnusedRegAddr: std_logic_vector(3 downto 0) := "1111";
-	constant ALU_NOP: std_logic_vector(3 downto 0) := "00101";
+	constant ALU_NOP: std_logic_vector(4 downto 0) := "00101";
 
-	constant ALU_ADD: std_logic_vector(3 downto 0) := "00000";
-	constant ALU_SUB: std_logic_vector(3 downto 0) := "01001";
-	constant ALU_ASSIGN: std_logic_vector(3 downto 0) := "00100";
-	constant ALU_OR: std_logic_vector(3 downto 0) := "00110";
-	constant ALU_AND: std_logic_vector(3 downto 0) := "01100"; 
-	constant ALU_SLL: std_logic_vector(3 downto 0) := "00111";
-	constant ALU_SRA: std_logic_vector(3 downto 0) := "01000";
-	constant ALU_SRL: std_logic_vector(3 downto 0) := "01010";
-	constant ALU_NOT: std_logic_vector(3 downto 0) := "01011";
-	constant ALU_LOAD: std_logic_vector(3 downto 0) := "01101";
-	constant ALU_CMP: std_logic_vector(3 downto 0) := "01111";
-	constant ALU_EQUAL: std_logic_vector(3 downto 0) := "10000";
-	--constant ALU_NOP: std_logic_vector(3 downto 0) := "1111";
+	constant ALU_ADD: std_logic_vector(4 downto 0) := "00000";
+	constant ALU_SUB: std_logic_vector(4 downto 0) := "01001";
+	constant ALU_ASSIGN: std_logic_vector(4 downto 0) := "00100";
+	constant ALU_OR: std_logic_vector(4 downto 0) := "00110";
+	constant ALU_AND: std_logic_vector(4 downto 0) := "01100"; 
+	constant ALU_SLL: std_logic_vector(4 downto 0) := "00111";
+	constant ALU_SRA: std_logic_vector(4 downto 0) := "01000";
+	constant ALU_SRL: std_logic_vector(4 downto 0) := "01010";
+	constant ALU_NOT: std_logic_vector(4 downto 0) := "01011";
+	constant ALU_LOAD: std_logic_vector(4 downto 0) := "01101";
+	constant ALU_CMP: std_logic_vector(4 downto 0) := "01111";
+	constant ALU_EQUAL: std_logic_vector(4 downto 0) := "10000";
+	--constant ALU_NOP: std_logic_vector(4 downto 0) := "1111";
 
 	type RegArray is array(11 downto 0) of std_logic_vector(15 downto 0);
 
@@ -73,7 +73,7 @@ package constantsIF is
 	constant ZERO4: std_logic_vector(3 downto 0) := "0000";
 	constant ZERO16: std_logic_vector(15 downto 0) := "0000000000000000";
 
-	--	Êìç‰ΩúÁ†ÅËØëÁ†Å
+	--	≤Ÿ◊˜¬Î“Î¬Î
 	constant THU_ID_ADD: std_logic_vector(4 downto 0) := "00000";
 	constant THU_ID_BRANCH: std_logic_vector(4 downto 0) := "00001";
 	constant THU_ID_BRANCHE: std_logic_vector(4 downto 0) := "00010";
@@ -92,7 +92,7 @@ package constantsIF is
 	constant THU_ID_CMP: std_logic_vector(4 downto 0) := "01111";
 	constant THU_ID_EQUAL: std_logic_vector(4 downto 0) := "10000";
 
-	--	ÁâπÊÆäÂØÑÂ≠òÂô®
+	--	Ãÿ ‚ºƒ¥Ê∆˜
 	constant REGISTER8_SP: std_logic_vector(3 downto 0) := "1000";
 	constant REGISTER9_T: std_logic_vector(3 downto 0) := "1001";
 	constant REGISTER10_IH: std_logic_vector(3 downto 0) := "1010";

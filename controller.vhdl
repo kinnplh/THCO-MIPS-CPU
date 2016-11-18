@@ -28,9 +28,9 @@ begin
 	variable reg1_addr_v, reg2_addr_v, reg3_addr_v: std_logic_vector(3 downto 0);
 	begin
 		inst_temp := inst(15 downto 11);
-		reg1_addr_v := "0" & inst(10 downto 8);
-		reg2_addr_v := "0" & inst(7 downto 5);
-		reg3_addr_v := "0" & inst(4 downto 2);
+		reg1_addr_v := '0' & inst(10 downto 8);
+		reg2_addr_v := '0' & inst(7 downto 5);
+		reg3_addr_v := '0' & inst(4 downto 2);
 		case (inst_temp) is
 			when OP_ADDIU =>
 				write_reg_enable <= ENABLE;
@@ -121,7 +121,7 @@ begin
  				reg2_addr <= UnusedRegAddr;
  				write_reg_addr <= reg1_addr_v;
  				EXEInst <= THU_ID_ASSIGN;
- 				immd(15 downto 8) <= (others >= "0");
+ 				immd(15 downto 8) <= (others => '0');
  				immd(7 downto 0) <= inst(7 downto 0);
  			when OP_LW =>
  				write_reg_enable <= ENABLE;
@@ -136,7 +136,7 @@ begin
  				reg2_addr <= UnusedRegAddr;
  				write_reg_addr <= reg2_addr_v;
  				EXEInst <= THU_ID_LOAD;
- 				immd(15 downto 5) <= (others >= inst(4));
+ 				immd(15 downto 5) <= (others => inst(4));
  				immd(4 downto 0) <= inst(4 downto 0); 			
  			when OP_LW_SP =>
  				write_reg_enable <= ENABLE;
@@ -151,7 +151,7 @@ begin
  				reg2_addr <= UnusedRegAddr;
  				write_reg_addr <= reg1_addr_v;
  				EXEInst <= THU_ID_LOAD;
- 				immd(15 downto 8) <= (others >= inst(7));
+ 				immd(15 downto 8) <= (others => inst(7));
  				immd(7 downto 0) <= inst(7 downto 0); 			
  			when OP_IH =>
  				case( inst(7 downto 0) ) is				
@@ -195,9 +195,9 @@ begin
  				reg2_read_enable <= DISABLE;
  				op1_from_reg <= DISABLE;
  				op2_from_reg <= DISABLE;
- 				reg1_addr <= DISABLE;
- 				reg2_addr <= DISABLE;
- 				write_reg_addr <= DISABLE;
+ 				reg1_addr <= UnusedRegAddr;
+ 				reg2_addr <= UnusedRegAddr;
+ 				write_reg_addr <= UnusedRegAddr;
  				EXEInst <= THU_ID_NOP;
  				immd(15 downto 0) <= ZERO16;
  			when OP_SHIFT =>
@@ -216,10 +216,10 @@ begin
 		 				write_reg_addr <= reg1_addr_v;
 		 				EXEInst <= THU_ID_SLL;
 		 				if (inst(4 downto 2) = "000") then
-			 				immd(15 downto 4) <= (others => "0");
+			 				immd(15 downto 4) <= (others => '0');
 			 				immd(3 downto 0) <= "1000";
 			 			else
-			 				immd(15 downto 3) <= (others => "0");
+			 				immd(15 downto 3) <= (others => '0');
 			 				immd(2 downto 0) <= inst(4 downto 2);
 			 			end if;	
  					when SHIFT_SRA =>
@@ -236,10 +236,10 @@ begin
 		 				write_reg_addr <= reg1_addr_v;
 		 				EXEInst <= THU_ID_SRA;
 		 				if (inst(4 downto 2) = "000") then
-			 				immd(15 downto 4) <= (others => "0");
+			 				immd(15 downto 4) <= (others => '0');
 			 				immd(3 downto 0) <= "1000";
 			 			else
-			 				immd(15 downto 3) <= (others => "0");
+			 				immd(15 downto 3) <= (others => '0');
 			 				immd(2 downto 0) <= inst(4 downto 2);
 			 			end if;	
  					when SHIFT_SRL =>
@@ -256,10 +256,10 @@ begin
 		 				write_reg_addr <= reg1_addr_v;
 		 				EXEInst <= THU_ID_SRL;
 		 				if (inst(4 downto 2) = "000") then
-			 				immd(15 downto 4) <= (others => "0");
+			 				immd(15 downto 4) <= (others => '0');
 			 				immd(3 downto 0) <= "1000";
 			 			else
-			 				immd(15 downto 3) <= (others => "0");
+			 				immd(15 downto 3) <= (others => '0');
 			 				immd(2 downto 0) <= inst(4 downto 2);
 			 			end if;		 				
  					when others =>
@@ -339,7 +339,7 @@ begin
  				reg2_addr <= UnusedRegAddr;
  				write_reg_addr <= REGISTER9_T;
  				EXEInst <= THU_ID_CMP;
- 				immd(15 downto 8) <= (others => "0");
+ 				immd(15 downto 8) <= (others => '0');
  				immd(7 downto 0) <= inst(7 downto 0); 	
  			when OP_SPECIAL =>
  				case (inst(10 downto 8)) is
@@ -566,7 +566,7 @@ begin
 		 				reg2_addr <= reg2_addr_v;
 		 				write_reg_addr <= reg2_addr_v;
 		 				EXEInst <= THU_ID_SRL;
-		 				immd(16 downto 0) <= ZERO16;
+		 				immd <= ZERO16;
  					when others =>
  				end case ; 				
  			when others =>
