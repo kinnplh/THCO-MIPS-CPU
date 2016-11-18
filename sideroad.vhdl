@@ -2,6 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
+use work.constantsIF.all;
 
 entity sideroad is
 	--reg1_addr	in	4		

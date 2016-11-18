@@ -2,6 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
+use work.constantsIF.all;
 
 entity controller is
 	--	EXEInst	in	6		1）
@@ -38,13 +39,21 @@ begin
 				if (real_reg1_data = '0') then
 					branch_enable <= ENABLE;
 					branch_target <= pc + immd;
+				else
+					branch_enable <= not ENABLE;
+					branch_target <= "0000000000000000";					
 				end if;
 			when BRANCHN =>
 				if (real_reg1_data /= '0') then
 					branch_enable <= ENABLE;
 					branch_target <= pc + immd;
+				else
+					branch_enable <= not ENABLE;
+					branch_target <= "0000000000000000";
 				end if;
-
+			when others =>
+				branch_enable <= not ENABLE;
+				branch_target <= "0000000000000000";
 		end case;
 	end process;	
 end architecture ; -- arch

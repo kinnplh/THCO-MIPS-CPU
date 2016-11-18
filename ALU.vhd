@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_signed.ALL;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-
+use work.constantsIF.all;
 entity ALU is
     Port (
 		   Read_Mem : in STD_LOGIC;
@@ -45,7 +45,8 @@ begin
 			when ALU_ASSIGN =>
 				res := ALU_Op1;
 			when others =>
-				NULL;
+				--NULL;
+				res := ZeroWord;
 		end case;
 			
 		ALU_OUT <= res;

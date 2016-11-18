@@ -2,6 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
+use work.constantsIF.all;
 
 entity loadconflict is
 	--	lastInst 上一条指令	in	6		

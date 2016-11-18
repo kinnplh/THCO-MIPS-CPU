@@ -2,7 +2,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
-use work.constant_macro.all;
+use work.constantsIF.all;
+
 entity mux is
 	--data1 实际返回的寄存器值或立即数	in	16		2）9）10）
 	--data2 实际返回的寄存器值或立即数	in	16		2）9）10）
@@ -25,6 +26,8 @@ begin
 			outdata <= data1;
 		elsif (choose = RHS) then
 			outdata <= data2;
+		else
+			outdata <= "0000000000000000";
 		end if;		
 	end process;	
 end architecture ;
