@@ -38,17 +38,18 @@ package constantsIF is
 
 
 	constant UnusedRegAddr: std_logic_vector(3 downto 0) := "1111";
-	constant NopInst: std_logic_vector(3 downto 0) := "0101";
+	constant ALU_NOP: std_logic_vector(3 downto 0) := "0101";
 	
-	constant ALU_ADD: std_logic := "0000";
-	constant ALU_SUB: std_logic := "1001";
-	constant ALU_ASSIGN: std_logic := "0100";
-	constant ALU_OR: std_logic := "0110";
-	constant ALU_AND: std_logic := "1100"; 
-	constant ALU_SLL: std_logic := "0111";
-	constant ALU_SRA: std_logic := "1000";
-	constant ALU_SRL: std_logic := "1010";
-	constant ALU_NOT: std_logic := "1011";
+	constant ALU_ADD: std_logic_vector(3 downto 0) := "0000";
+	constant ALU_SUB: std_logic_vector(3 downto 0) := "1001";
+	constant ALU_ASSIGN: std_logic_vector(3 downto 0) := "0100";
+	constant ALU_OR: std_logic_vector(3 downto 0) := "0110";
+	constant ALU_AND: std_logic_vector(3 downto 0) := "1100"; 
+	constant ALU_SLL: std_logic_vector(3 downto 0) := "0111";
+	constant ALU_SRA: std_logic_vector(3 downto 0) := "1000";
+	constant ALU_SRL: std_logic_vector(3 downto 0) := "1010";
+	constant ALU_NOT: std_logic_vector(3 downto 0) := "1011";
+	--constant ALU_NOP: std_logic_vector(3 downto 0) := "1111";
 
 	type RegArray is array(11 downto 0) of std_logic_vector(15 downto 0);
 
@@ -65,9 +66,8 @@ package constantsIF is
 	constant ENABLE: std_logic := '1';
 	constant DISABLE: std_logic := '0';
 	constant ZERO3: std_logic_vector(3 downto 0) := "000";
-	
-	--	操作码
-	constant THU_ADDIU: std_logic_vector(4 downto 0) := "01001";
+	constant ZERO4: std_logic_vector(3 downto 0) := "0000";
+
 	--	操作码译码
 	constant THU_ID_ADD: std_logic_vector(3 downto 0) := "0000";
 	constant THU_ID_LOAD: std_logic_vector(3 downto 0) := "1101";
@@ -75,5 +75,63 @@ package constantsIF is
 	constant BRANCHE: std_logic_vector(3 downto 0) := "0010";
 	constant BRANCHEN: std_logic_vector(3 downto 0) := "0011";
 	constant JR: std_logic_vector(3 downto 0) := "1110";
+
+	--	操作码
+	constant OP_ADDIU: std_logic_vector(4 downto 0) := "01001";
+	constant OP_ADDIU3: std_logic_vector(4 downto 0) := "01000";
+	constant OP_SPECIAL: std_logic_vector(4 downto 0) := "01100";
+	constant OP_ADD_SUB_U: std_logic_vector(4 downto 0) := "11100";
+	constant OP_LOGIC: std_logic_vector(4 downto 0) := "11101";
+	constant OP_B: std_logic_vector(4 downto 0) := "00010";
+	constant OP_BEQZ: std_logic_vector(4 downto 0) := "00100";
+	constant OP_BNQZ: std_logic_vector(4 downto 0) := "00101";
+	constant OP_LI: std_logic_vector(4 downto 0) := "01101";
+	constant OP_LW: std_logic_vector(4 downto 0) := "10011";
+	constant OP_LW_SP: std_logic_vector(4 downto 0) := "10010";
+	constant OP_IH: std_logic_vector(4 downto 0) := "11110";
+	constant OP_NOP: std_logic_vector(4 downto 0) := "00001";
+	constant OP_SHIFT: std_logic_vector(4 downto 0) := "00110";
+	constant OP_SW: std_logic_vector(4 downto 0) := "11011";
+	constant OP_SW_SP: std_logic_vector(4 downto 0) := "11010";
+	constant OP_ADDSP3: std_logic_vector(4 downto 0) := "00000";
+	constant OP_SLTI: std_logic_vector(4 downto 0) := "01010";
+	constant OP_SLTUI: std_logic_vector(4 downto 0) := "01011";
+
+	--function code
+
+	-- 01100 OP_SPECIAL inst(10 downto 8)
+	constant SPECIAL_ADDSP: std_logic_vector(2 downto 0) := "011";
+	constant SPECIAL_BTEQZ: std_logic_vector(2 downto 0) := "000";
+	constant SPECIAL_MTSP: std_logic_vector(2 downto 0) := "100";
+	constant SPECIAL_BTNEZ: std_logic_vector(2 downto 0) := "001";
+	constant SPECIAL_SW_RS: std_logic_vector(2 downto 0) := "010";
+
+	-- 11100 OP_ADD_SUB_U inst(1 downto 0)
+	constant ADD_SUB_U_ADDU: std_logic_vector(1 downto 0) := "01";
+	constant ADD_SUB_U_SUBU: std_logic_vector(1 downto 0) := "11";
+
+	-- 11101 OP_LOGIC inst(4 downto 0) 
+	constant LOGIC_AND: std_logic_vector(4 downto 0) := "10011";
+	constant LOGIC_CMP: std_logic_vector(4 downto 0) := "01010";
+	constant LOGIC_PC: std_logic_vector(4 downto 0) := "00000";
+		--sub function code for pc inst(7 downto 5)
+		constant PC_JR: std_logic_vector(2 downto 0) := "000";
+		constant PC_MFPC: std_logic_vector(2 downto 0) := "010";
+		-- end sub --
+	constant LOGIC_OR: std_logic_vector(4 downto 0) := "01101";
+	constant LOGIC_SRAV: std_logic_vector(4 downto 0) := "00111";
+	constant LOGIC_NOT: std_logic_vector(4 downto 0) := "01111";
+	constant LOGIC_SLLV: std_logic_vector(4 downto 0) := "00100";
+	constant LOGIC_SRLV: std_logic_vector(4 downto 0) := "00110";
+
+	-- 11110 OP_IH inst(7 downto 0)
+	constant IH_MFIH: std_logic_vector(7 downto 0) := "00000000";
+	constant IH_MTIH: std_logic_vector(7 downto 0) := "00000001";
+
+	-- 00110 OP_SHIFT inst(1 downto 0)
+	constant SHIFT_SLL: std_logic_vector(1 downto 0) := "00";
+	constant SHIFT_SRA: std_logic_vector(1 downto 0) := "11";
+	constant SHIFT_SRL: std_logic_vector(1 downto 0) := "10";
+
 
 end package ; -- constantsIF 

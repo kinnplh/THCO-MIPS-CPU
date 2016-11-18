@@ -35,7 +35,7 @@ begin
 		if rst = ID_EXE_LatchReset then
 			write_reg_enable_out <= not WriteEnable;
 			write_reg_addr_out <= UnusedRegAddr;
-			inst_out <= NopInst;
+			inst_out <= ALU_NOP;
 			write_mem_enable_out <= not WriteEnable;
 			read_mem_enable_out <= not ReadEnable;
 			op1 <= ZeroWord;
@@ -54,7 +54,7 @@ begin
 			elsif all_pause_signal(3) /= pauseSignal then
 				write_reg_enable_out <= not WriteEnable;
 				write_reg_addr_out <= UnusedRegAddr;
-				inst_out <= NopInst;
+				inst_out <= ALU_NOP;
 				write_mem_enable_out <= not WriteEnable;
 				read_mem_enable_out <= not ReadEnable;
 				op1 <= ZeroWord;
