@@ -6,7 +6,7 @@ use work.constantsIF.all;
 
 entity loadconflict is
  	port (
- 		lastInst: in std_logic_vector(3 downto 0);
+ 		lastInst: in std_logic_vector(4 downto 0);
 		lastAddress: in std_logic_vector(3 downto 0);
 
 		reg1_addr, reg2_addr: in std_logic_vector(3 downto 0);

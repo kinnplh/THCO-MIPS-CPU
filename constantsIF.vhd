@@ -55,7 +55,7 @@ package constantsIF is
 	constant ALU_EQUAL: std_logic_vector(4 downto 0) := "10000";
 	--constant ALU_NOP: std_logic_vector(4 downto 0) := "1111";
 
-	type RegArray is array(11 downto 0) of std_logic_vector(15 downto 0);
+	type RegArray is array(15 downto 0) of std_logic_vector(15 downto 0);
 
 
 

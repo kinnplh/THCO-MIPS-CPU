@@ -5,24 +5,22 @@ use IEEE.NUMERIC_STD.ALL;
 use work.constantsIF.all;
 
 entity ALU is
-    Port (
-		   Read_Mem : in STD_LOGIC;
-		   Write_Mem : in STD_LOGIC;
-		   ALU_Inst : in  STD_LOGIC_VECTOR (4 downto 0);
-           ALU_Op1 : in  STD_LOGIC_VECTOR (15 downto 0);
-           ALU_Op2 : in  STD_LOGIC_VECTOR (15 downto 0);
-           ALU_OUT : out  STD_LOGIC_VECTOR (15 downto 0);
-		   Addr_Type: out STD_LOGIC_VECTOR (2 downto 0);
-		   ALU_Pause : out STD_LOGIC
-		
-		 );
-		   
+	Port (
+		Read_Mem : in STD_LOGIC;
+		Write_Mem : in STD_LOGIC;
+		ALU_Inst : in  STD_LOGIC_VECTOR (4 downto 0);
+		ALU_Op1 : in  STD_LOGIC_VECTOR (15 downto 0);
+		ALU_Op2 : in  STD_LOGIC_VECTOR (15 downto 0);
+		ALU_OUT : out  STD_LOGIC_VECTOR (15 downto 0);
+		Addr_Type: out STD_LOGIC_VECTOR (2 downto 0);
+		ALU_Pause : out STD_LOGIC
+	);		   
 end ALU;
 
 architecture Behavioral of ALU is
 begin
 	process (Read_Mem, Write_Mem, ALU_Op1, ALU_Op2, ALU_Inst)
-		variable res : STD_LOGIC_VECTOR(15 downto 0) := ZeroWord;
+	variable res : STD_LOGIC_VECTOR(15 downto 0) := ZeroWord;
 	begin
 		case ALU_Inst is
 			when ALU_ADD =>

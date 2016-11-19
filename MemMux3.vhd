@@ -18,7 +18,7 @@ end entity;
 
 architecture bhv of MemMux3 is
 begin
-	process(mem_signal)
+	process(mem_signal, dm_data, im_data, write_data)
 	begin
 		case (mem_signal) is
 			when DMRead => out_data <= dm_data;

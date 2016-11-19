@@ -9,7 +9,7 @@ entity ID_EXE_Latch is
 	clk, rst: in std_logic;
 	write_reg_enable: in std_logic;
 	write_reg_addr: in std_logic_vector(3 downto 0);
-	inst: in std_logic_vector(3 downto 0);
+	inst: in std_logic_vector(4 downto 0);
 	write_mem_enable: in std_logic;
 	read_mem_enable: in std_logic;
 	op1, op2: in std_logic_vector(15 downto 0);
@@ -18,7 +18,7 @@ entity ID_EXE_Latch is
 
 	write_reg_enable_out: out std_logic;
 	write_reg_addr_out: out std_logic_vector(3 downto 0);
-	inst_out: out std_logic_vector(3 downto 0);
+	inst_out: out std_logic_vector(4 downto 0);
 	write_mem_enable_out: out std_logic;
 	read_mem_enable_out: out std_logic;
 	op1_out, op2_out: out std_logic_vector(15 downto 0);

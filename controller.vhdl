@@ -305,9 +305,9 @@ begin
  				reg2_read_enable <= DISABLE;
  				op1_from_reg <= ENABLE;
  				op2_from_reg <= DISABLE;
- 				reg1_addr <= reg1_addr_v;
+ 				reg1_addr <= REGISTER8_SP;
  				reg2_addr <= UnusedRegAddr;
- 				write_reg_addr <= REGISTER8_SP;
+ 				write_reg_addr <= reg1_addr_v;
  				EXEInst <= THU_ID_ADD;
  				immd(15 downto 8) <= (others => inst(7));
  				immd(7 downto 0) <= inst(7 downto 0);
@@ -421,19 +421,37 @@ begin
  				
  				end case ;
  			when OP_ADD_SUB_U =>
- 				write_reg_enable <= ENABLE;
- 				write_mem_enable <= DISABLE;
- 				write_mem_data_from_reg1 <= DISABLE;
- 				read_mem_enable <= DISABLE;
- 				reg1_read_enable <= ENABLE;
- 				reg2_read_enable <= ENABLE;
- 				op1_from_reg <= ENABLE;
- 				op2_from_reg <= ENABLE;
- 				reg1_addr <= reg1_addr_v;
- 				reg2_addr <= reg2_addr_v;
- 				write_reg_addr <= reg3_addr_v;
- 				EXEInst <= THU_ID_SUB;
- 				immd(15 downto 0) <= ZERO16;
+				case (inst(1 downto 0)) is
+					when (ADD_SUB_U_ADDU) =>
+						write_reg_enable <= ENABLE;
+						write_mem_enable <= DISABLE;
+						write_mem_data_from_reg1 <= DISABLE;
+						read_mem_enable <= DISABLE;
+						reg1_read_enable <= ENABLE;
+						reg2_read_enable <= ENABLE;
+						op1_from_reg <= ENABLE;
+						op2_from_reg <= ENABLE;
+						reg1_addr <= reg1_addr_v;
+						reg2_addr <= reg2_addr_v;
+						write_reg_addr <= reg3_addr_v;
+						EXEInst <= THU_ID_ADD;
+						immd(15 downto 0) <= ZERO16;
+					when (ADD_SUB_U_SUBU) =>
+						write_reg_enable <= ENABLE;
+						write_mem_enable <= DISABLE;
+						write_mem_data_from_reg1 <= DISABLE;
+						read_mem_enable <= DISABLE;
+						reg1_read_enable <= ENABLE;
+						reg2_read_enable <= ENABLE;
+						op1_from_reg <= ENABLE;
+						op2_from_reg <= ENABLE;
+						reg1_addr <= reg1_addr_v;
+						reg2_addr <= reg2_addr_v;
+						write_reg_addr <= reg3_addr_v;
+						EXEInst <= THU_ID_SUB;
+						immd(15 downto 0) <= ZERO16;
+					when others =>
+				end case;
  			when OP_LOGIC =>
  				case( inst(4 downto 0) ) is				
  					when LOGIC_AND =>
