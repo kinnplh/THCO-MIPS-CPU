@@ -42,12 +42,14 @@ begin
 		case (mem_signal) is
 			when DMRead =>
 				ram1_data <= "ZZZZZZZZZZZZZZZZ";
+				ram1_en <= '0';
 				ram1_oe <= '0';
 				ram1_we <= '1';
 				ram1_addr <= "00" & read_write_addr;
 			when DMWrite =>
 				ram1_data <= write_data;
 				ram1_addr <= "00" & read_write_addr;
+				ram1_en <= '0';
 				ram1_oe <= '1';
 				ram1_we <= '0';
 			when SerialDataRead =>
@@ -57,7 +59,7 @@ begin
 				ram1_data <= write_data;
 				wrn <= '0';
 			when others =>
-				--
+				null;
 		end case;
 	end process;
 

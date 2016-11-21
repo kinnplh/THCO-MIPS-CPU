@@ -63,8 +63,8 @@ package constantsIF is
     constant RHS: std_logic := '1';
 
 	--	pause
-	constant SUSPEND: std_logic := '0';
-	constant WAKE: std_logic := '1';
+	constant SUSPEND: std_logic := '1';
+	constant WAKE: std_logic := '0';
 
 	--	controller
 	constant ENABLE: std_logic := '1';

@@ -60,14 +60,12 @@ begin
 			when others =>
 				NULL;
 		end case;
-			
-		ALU_OUT <= res;
+					
 		ALU_Pause <= '0';
-		
 		if(Read_Mem = ReadEnable) then
-			if(res >= x"8000" and res <= x"BEFF")then
+			if((res >= x"8000" and res <= x"BEFF") or (res >= x"BF10"))then
 				Addr_Type <= DMRead;
-			elsif(res >= x"0000" and res <= x"3FFF")then
+			elsif(res >= x"0000" and res <= x"7FFF")then
 				Addr_Type <= IMRead;
 				if (Read_Mem = ReadEnable) or (Write_Mem = WriteEnable)then
 					ALU_Pause <= pauseSignal;
@@ -76,6 +74,11 @@ begin
 				Addr_Type <= SerialStateRead;
 			elsif(res = x"BF00")then
 				Addr_Type <= SerialDataRead;
+			else
+				Addr_Type <= ALUResult;
+			end if;
+			if res >= x"8000" then
+				res := res - x"8000";
 			end if;
 		elsif(Write_Mem = WriteEnable) then
 			if(res >= x"8000" and res <= x"BEFF")then
@@ -91,6 +94,8 @@ begin
 		else 
 			Addr_Type <= ALUResult;	
 		end if;
-			
+		
+		ALU_OUT <= res;
+		
 	end process;
 end Behavioral;
