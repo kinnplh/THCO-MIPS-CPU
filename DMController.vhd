@@ -54,7 +54,7 @@ begin
 				ram1_we <= '0';
 			when SerialDataRead =>
 				ram1_data <= "ZZZZZZZZZZZZZZZZ";
-				rdn <= '1';
+				rdn <= '0';
 			when SerialDataWrite =>
 				ram1_data <= write_data;
 				wrn <= '0';
@@ -63,12 +63,12 @@ begin
 		end case;
 	end process;
 
-	process(ram1_data, mem_signal)
+	process(ram1_data, mem_signal, tbre, tsre, data_ready)
 	begin
 		if mem_signal = DMRead or mem_signal = SerialDataRead then
 			read_result <= ram1_data;
 		elsif mem_signal = SerialStateRead then
-			read_result <= "00000000000000" & (tbre AND tsre) & data_ready;
+			read_result <= "00000000000000" & data_ready & (tbre AND tsre);
 		else
 			read_result <= NOPInstruct;
 		end if;

@@ -22,6 +22,8 @@ begin
 	begin
 		case (mem_signal) is
 			when DMRead => out_data <= dm_data;
+			when SerialStateRead => out_data <= dm_data;
+			when SerialDataRead => out_data <= dm_data;
 			when IMRead => out_data <= im_data;
 			when ALUResult => out_data <= write_data;
 			when others => out_data <= ZeroWord;

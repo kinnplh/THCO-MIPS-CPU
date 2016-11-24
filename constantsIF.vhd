@@ -4,7 +4,7 @@ use ieee.numeric_std.all; -- needed?
 
 package constantsIF is
 	constant edgeDetect: std_logic := '1';
-	constant pcReset: std_logic := '1';
+	constant pcReset: std_logic := '0';
 	constant pcPause: std_logic := '1';
 	constant originAddr: std_logic_vector(15 downto 0) := "0000000000000000";
 
@@ -14,9 +14,9 @@ package constantsIF is
 	constant IMWriteEnable: std_logic := '1';
 
 	constant NOPInstruct: std_logic_vector(15 downto 0) := "0000100000000000";
-	constant IF_ID_LatchReset: std_logic := '1';
-	constant ID_EXE_LatchReset: std_logic := '1';
-	constant RstEnable: std_logic := '1';
+	constant IF_ID_LatchReset: std_logic := '0';
+	constant ID_EXE_LatchReset: std_logic := '0';
+	constant RstEnable: std_logic := '0';
 	constant pauseSignal: std_logic := '1';
 
 	constant ZeroWord: std_logic_vector(15 downto 0) := "0000000000000000";
@@ -134,7 +134,7 @@ package constantsIF is
 	constant ADD_SUB_U_SUBU: std_logic_vector(1 downto 0) := "11";
 
 	-- 11101 OP_LOGIC inst(4 downto 0) 
-	constant LOGIC_AND: std_logic_vector(4 downto 0) := "10011";
+	constant LOGIC_AND: std_logic_vector(4 downto 0) := "01100";
 	constant LOGIC_CMP: std_logic_vector(4 downto 0) := "01010";
 	constant LOGIC_PC: std_logic_vector(4 downto 0) := "00000";
 		--sub function code for pc inst(7 downto 5)

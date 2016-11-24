@@ -1,5 +1,5 @@
 library IEEE;
-use IEEE.STD_LOGIC_signed.ALL;
+use IEEE.STD_LOGIC_unsigned.ALL;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use work.constantsIF.all;
@@ -58,7 +58,8 @@ begin
 				end if;
 
 			when others =>
-				NULL;
+				res := ZeroWord;
+				Addr_Type <= AluResult;
 		end case;
 					
 		ALU_Pause <= '0';
@@ -67,9 +68,7 @@ begin
 				Addr_Type <= DMRead;
 			elsif(res >= x"0000" and res <= x"7FFF")then
 				Addr_Type <= IMRead;
-				if (Read_Mem = ReadEnable) or (Write_Mem = WriteEnable)then
-					ALU_Pause <= pauseSignal;
-				end if;
+				ALU_Pause <= pauseSignal;
 			elsif(res = x"BF01")then
 				Addr_Type <= SerialStateRead;
 			elsif(res = x"BF00")then
@@ -77,19 +76,22 @@ begin
 			else
 				Addr_Type <= ALUResult;
 			end if;
+			
 			if res >= x"8000" then
 				res := res - x"8000";
 			end if;
 		elsif(Write_Mem = WriteEnable) then
-			if(res >= x"8000" and res <= x"BEFF")then
+			if((res >= x"8000" and res <= x"BEFF") or (res >= x"BF10"))then
 				Addr_Type <= DMWrite;
-			elsif(res >= x"0000" and res <= x"3FFF")then
+			elsif(res >= x"0000" and res <= x"7FFF")then
 				Addr_Type <= IMWrite;
-				if (Read_Mem = ReadEnable) or (Write_Mem = WriteEnable)then
-					ALU_Pause <= pauseSignal;
-				end if;
+				ALU_Pause <= pauseSignal;
 			elsif(res = x"BF00")then
 				Addr_Type <= SerialDataWrite;
+			end if;
+			
+			if res >= x"8000" then
+				res := res - x"8000";
 			end if;
 		else 
 			Addr_Type <= ALUResult;	

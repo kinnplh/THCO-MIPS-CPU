@@ -25,21 +25,23 @@ ARCHITECTURE behavioral OF TopEntity_TopEntity_sch_tb IS
    PORT( clk	:	IN	STD_LOGIC; 
           rst	:	IN	STD_LOGIC; 
           waddr	:	OUT	STD_LOGIC_VECTOR (3 DOWNTO 0); 
-          wdata	:	OUT	STD_LOGIC_VECTOR (15 DOWNTO 0));
+          wdata	:	OUT	STD_LOGIC_VECTOR (15 DOWNTO 0);
+			 inst: out std_logic_Vector(15 downto 0));
    END COMPONENT;
 
    SIGNAL clk	:	STD_LOGIC;
    SIGNAL rst	:	STD_LOGIC;
    SIGNAL waddr	:	STD_LOGIC_VECTOR (3 DOWNTO 0);
    SIGNAL wdata	:	STD_LOGIC_VECTOR (15 DOWNTO 0);
-
+	SIGNAL inst	:	STD_LOGIC_VECTOR (15 DOWNTO 0);
 BEGIN
 
    UUT: TopEntity PORT MAP(
 		clk => clk, 
 		rst => rst, 
 		waddr => waddr, 
-		wdata => wdata
+		wdata => wdata,
+		inst => inst
    );
 
 -- *** Test Bench - User Defined Section ***
@@ -53,9 +55,9 @@ BEGIN
 	
 	rst_process : process
 	begin
-		rst <= '1';
-		wait for 100ns;
 		rst <= '0';
+		wait for 100ns;
+		rst <= '1';
 		wait;
 	end process;
 -- *** End Test Bench - User Defined Section ***

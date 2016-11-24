@@ -25,7 +25,7 @@ begin
 				branch_target <= pc + immd;
 			when THU_ID_JR => 
 				branch_enable <= ENABLE;
-				branch_target <= pc + real_reg1_data;
+				branch_target <= real_reg1_data;
 			when THU_ID_BRANCHE =>
 				if (real_reg1_data = ZeroWord) then
 					branch_enable <= ENABLE;

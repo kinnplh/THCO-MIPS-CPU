@@ -20,7 +20,7 @@ architecture arch of MEM_WB_Latch is
 begin
 	process(clk, rst)
 	begin
-		if rst = '1' then
+		if rst = RstEnable then
 			wb_write_back <= '0';
 			wb_out_data <= ZeroWord;
 			wb_write_reg <= "0000"; --?
