@@ -1,4 +1,5 @@
 *
+!THINPAD_no_chooser
 !*.vhd
 !*.vhdl
 !*.sch
